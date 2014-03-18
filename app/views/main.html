@@ -1,10 +1,28 @@
-<div infinite-scroll='photos.nextPage()' infinite-scroll-disabled='photos.busy' infinite-scroll-distance='2'>
-	<div ng-repeat='item in photos.items'>
-		<div class="img-container">
-			<img class="img" lazy-src="{{'item.url_l'}}" alt="" lazy-loader=".lazy-loader" lazy-loading-class="not-loaded" lazy-loaded-class="is-loaded">
+<div class="row">
+	<div class="small-6 columns proto-panel l-4">
+		<h2>Lazy Loading images</h2>
+		<div infinite-scroll='photos.nextPage()' infinite-scroll-disabled='photos.busy' infinite-scroll-distance='2'>
+			<ul class="small-block-grid-3">
+				<li ng-repeat='item in photos.items'>
+					<div class="img-container">
+						<img class="img th" lazy-src="{{'item.url_l'}}" alt="" lazy-loader=".lazy-loader" lazy-loading-class="not-loaded" lazy-loaded-class="is-loaded">
+					</div>
+				</li>
+			</ul>
+			<div ng-show='photos.busy'>Loading from Flickr...</div>
 		</div>
 	</div>
-	<div ng-show='photos.busy'>Loading data...</div>
+	<div class="small-6 columns">
+		<h2>Using ngSrc</h2>
+		<div infinite-scroll='photos.nextPage()' infinite-scroll-disabled='photos.busy' infinite-scroll-distance='2'>
+			<ul class="small-block-grid-3">
+				<li ng-repeat='item in photos.items'>
+					<div class="img-container">
+						<img class="ng-img th" ng-src="{{item.url_l}}">
+					</div>
+				</li>
+			</ul>
+			<div ng-show='photos.busy'>Loading from Flickr...</div>
+		</div>
+	</div>
 </div>
-test
-<div class="lazy-loader">loading awesomeness...</div>

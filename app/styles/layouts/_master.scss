@@ -1,12 +1,6 @@
 .img-container {
 	position: relative;
-	width: 50%;
-	min-height: 100px;
-	margin: 0 auto;
-	overflow: hidden;
-	background: #dbdbdb;
 	.img {
-		max-width: 100%;
 		opacity: 0;
 		transition: opacity 1s;
 		&.not-loaded {
@@ -29,4 +23,14 @@
 
 .lazy-loader {
 	display: none;
+}
+
+.ng-repeat-animate.ng-enter,
+.ng-repeat-animate.ng-move {
+  transition:1s linear all;
+  opacity:0;
+  &.ng-enter-active,
+  &.ng-move-active {
+	opacity: 1;
+  }
 }

@@ -5,6 +5,7 @@ angular.module('photoAppApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
+  'ngAnimate',
   'infinite-scroll',
   'mm.foundation',
   'lazyload'
