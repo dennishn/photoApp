@@ -1,13 +1,16 @@
 .img-container {
 	position: relative;
+	overflow: hidden;
 	.img {
-		opacity: 0;
-		transition: opacity 1s;
+		width: 137px;
+		height: 137px;
+		// opacity: 0;
+		// transition: opacity 1s;
 		&.not-loaded {
-			opacity: 0;
+			// opacity: 0;
 		}
 		&.is-loaded {
-			opacity: 1;
+			// opacity: 1;
 		}
 	}
 	.lazy-loader {
@@ -25,12 +28,14 @@
 	display: none;
 }
 
-.ng-repeat-animate.ng-enter,
-.ng-repeat-animate.ng-move {
-  transition:1s linear all;
-  opacity:0;
-  &.ng-enter-active,
-  &.ng-move-active {
-	opacity: 1;
-  }
+.ng-repeat-animate {
+	&.ng-enter {
+		animation: flipInX 1s;
+	}
+	&.ng-enter-active {
+		opacity: 0.4;
+	}
+	&.ng-enter-stagger {
+		animation-delay: .1s;
+	}
 }

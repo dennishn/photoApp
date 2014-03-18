@@ -3,7 +3,7 @@
 		<h2>Lazy Loading images</h2>
 		<div infinite-scroll='photos.nextPage()' infinite-scroll-disabled='photos.busy' infinite-scroll-distance='2'>
 			<ul class="small-block-grid-3">
-				<li ng-repeat='item in photos.items'>
+				<li ng-repeat='item in photos.items' class="ng-lazy-animate">
 					<div class="img-container">
 						<img class="img th" lazy-src="{{'item.url_l'}}" alt="" lazy-loader=".lazy-loader" lazy-loading-class="not-loaded" lazy-loaded-class="is-loaded">
 					</div>
@@ -16,7 +16,7 @@
 		<h2>Using ngSrc</h2>
 		<div infinite-scroll='photos.nextPage()' infinite-scroll-disabled='photos.busy' infinite-scroll-distance='2'>
 			<ul class="small-block-grid-3">
-				<li ng-repeat='item in photos.items'>
+				<li ng-repeat='item in photos.items' class="ng-repeat-animate">
 					<div class="img-container">
 						<img class="ng-img th" ng-src="{{item.url_l}}">
 					</div>
