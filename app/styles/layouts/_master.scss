@@ -1,0 +1,32 @@
+.img-container {
+	position: relative;
+	width: 50%;
+	min-height: 100px;
+	margin: 0 auto;
+	overflow: hidden;
+	background: #dbdbdb;
+	.img {
+		max-width: 100%;
+		opacity: 0;
+		transition: opacity 1s;
+		&.not-loaded {
+			opacity: 0;
+		}
+		&.is-loaded {
+			opacity: 1;
+		}
+	}
+	.lazy-loader {
+		display: block;
+		position: absolute;
+		width: 100%;
+		top: 50%;
+		transform: translateY(-50%);
+		text-align: center;
+		z-index: 10;
+	}
+}
+
+.lazy-loader {
+	display: none;
+}
