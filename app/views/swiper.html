@@ -1,0 +1,7 @@
+<div id="swiper" class="swiper-container" swiper>
+	<div class="swiper-wrapper" infinite-scroll="photos.nextPage()" infinite-scroll-disabled="photos.busy" infinite-scroll-distance="2">
+		<div ng-repeat="item in photos.items" class="swiper-slide" repeat-done>
+			<img lazy-src="{{'item.url_l'}}" alt="" lazy-loader=".lazy-loader" lazy-loading-class="not-loaded" lazy-loaded-class="is-loaded">
+		</div>
+	</div>
+</div>

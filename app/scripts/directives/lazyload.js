@@ -55,9 +55,18 @@
 
 					img.src = src;
 
+					console.log('loaded');
+
 					img.remove();
 				});
 			}
 		};
-	}]);
+	}])
+	.directive('repeatDone', function($rootScope) {
+		return function(scope, element, attrs) {
+			if (scope.$last){
+				$rootScope.$emit('last-repeat');
+			}
+		};
+	});
 })();

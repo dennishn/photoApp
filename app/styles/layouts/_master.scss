@@ -1,3 +1,9 @@
+html, body {
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
 .img-container {
 	position: relative;
 	overflow: hidden;
@@ -10,7 +16,7 @@
 			// opacity: 0;
 		}
 		&.is-loaded {
-			// opacity: 1;
+			animation: flipInX 1s;
 		}
 	}
 	.lazy-loader {
@@ -28,14 +34,36 @@
 	display: none;
 }
 
-.ng-repeat-animate {
+.application {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+[ui-view] {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	&.ng-enter,
+	&.ng-leave {
+		position: absolute;
+		left: 0;
+		right: 0;
+		transition: all 1s;
+	}
 	&.ng-enter {
-		animation: flipInX 1s;
+		opacity: 0;
+		transform: scale3d(0.5, 0.5, 0.5);
 	}
 	&.ng-enter-active {
-		opacity: 0.4;
+		opacity: 1;
+		transform: scale3d(1, 1, 1);
 	}
-	&.ng-enter-stagger {
-		animation-delay: .1s;
+	&.ng-leave {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+	&.ng-leave-active {
+		opacity: 0;
+		transform: translate3d(100px, 0, 0);
 	}
 }
