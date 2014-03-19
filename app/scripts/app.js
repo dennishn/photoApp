@@ -28,6 +28,7 @@ angular.module('photoAppApp', [
 		// .otherwise({
 		// 	redirectTo: '/'
 		// });
+		$urlRouterProvider.otherwise('/');
 		$stateProvider
 			.state('home', {
 				url: '/',

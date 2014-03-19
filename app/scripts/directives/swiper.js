@@ -2,16 +2,12 @@
 
 angular.module('photoAppApp')
 .directive('swiper', function ($rootScope) {
+	var bufferOffset = 5;
 	return {
 		restrict: "A",
 		link: function(scope, element, attrs) {
 			var direction = '';
-			console.log($(element).children().children());
-			$(element).find('img').load(function(){
-				console.log('rdy!');
-			});
-			$rootScope.$on('last-repeat', function() {
-				console.log('yoloscope');
+			scope.$on('all-images-loaded', function() {
 				var mySwiper = $(element).swiper({
 					mode:"horizontal",
 					loop: false,
@@ -25,9 +21,6 @@ angular.module('photoAppApp')
 							var opacity = 1 - Math.min(Math.abs(progress),1);
 							slide.style.opacity = opacity;
 						}
-					},
-					onImagesReady: function(swiper){
-						console.log('rdy');
 					},
 					onTouchStart: function(swiper, event){
 						for (var i = 0; i < swiper.slides.length; i++){
@@ -45,12 +38,29 @@ angular.module('photoAppApp')
 					onSlideChangeEnd: function(swiper) {
 
 					},
+					onSlideNext: function(swiper) {
+						console.log((scope.photos.imgCount - swiper.activeIndex));
+						if( (scope.photos.imgCount - swiper.activeIndex) <= bufferOffset ) {
+							console.log('nu er det tid!')
+							scope.photos.nextPage();
+							// mySwiper.init(true, true);
+							// mySwiper.calcSlides();
+							// mySwiper.reInit();
+							scope.$on('all-images-loaded', function() {
+								setTimeout(function(){
+									mySwiper.init(true, true);
+									mySwiper.calcSlides();
+								}, 100);
+							});
+						}
+						//console.log(mySwiper)
+						//scope.photos.nextPage();
+					},
 					onSwiperCreated: function(swiper) {
 						var currentSlide = swiper.slides[swiper.activeIndex];
 					}
 				});
 			});
-
 		}
 	}
 });

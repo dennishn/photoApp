@@ -7,7 +7,11 @@ angular.module('photoAppApp')
 	  'AngularJS',
 	  'Karma'
 	];
+
+
 	$scope.photos = new Photos();
+
+	//console.log($scope.photos);
 
 	$scope.openSwiper = function() {
 		$location.path('/swiper');

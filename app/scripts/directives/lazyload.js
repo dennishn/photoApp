@@ -4,7 +4,10 @@
 	'use strict';
 
 	angular.module('lazyload', []).
-	directive('lazySrc', ['$document', '$parse', function($document, $parse) {
+	directive('lazySrc', ['$document', '$parse', '$rootScope', function($document, $parse) {
+
+		var count = 0;
+
 		return {
 			restrict: 'A',
 			link: function(scope, iElement, iAttrs) {
@@ -20,7 +23,6 @@
 				if (angular.isDefined(iAttrs.lazyLoader)) {
 					loader = angular.element($document[0].querySelector(iAttrs.lazyLoader)).clone();
 				}
-
 
 				var imgSrc = $parse(iAttrs.lazySrc);
 
@@ -47,6 +49,10 @@
 							'width': img.width,
 							'height': img.height
 						});
+						count++;
+						if(scope.photos.imgCount === count) {
+							scope.$emit('all-images-loaded');
+						}
 					};
 
 					img.onerror= function() {
@@ -55,9 +61,9 @@
 
 					img.src = src;
 
-					console.log('loaded');
-
 					img.remove();
+
+
 				});
 			}
 		};
@@ -65,8 +71,13 @@
 	.directive('repeatDone', function($rootScope) {
 		return function(scope, element, attrs) {
 			if (scope.$last){
-				$rootScope.$emit('last-repeat');
+				scope.$emit('last-repeat');
 			}
+		};
+	})
+	.directive('allImagesLoaded', function($rootScope) {
+		return function(scope, element, attrs) {
+			console.log('someVal', count);
 		};
 	});
 })();
