@@ -1,4 +1,13 @@
-/*
- * Base styling. example: link base styling, base font size etc.
- */
+//
+// Variables
+// --------------------------------------------------
 
+
+// Global values
+// --------------------------------------------------
+
+// Media queries
+$screen: 'only screen';
+$small-up: '#{$screen} and (min-width: #{$screen-sm-min})';
+$medium-up: '#{$screen} and (min-width: #{$screen-md-min})';
+$large-up: '#{$screen} and (min-width: #{$screen-lg-min})';

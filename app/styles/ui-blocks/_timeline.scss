@@ -1,0 +1,164 @@
+.timeline {
+	position: relative;
+	overflow: auto;
+
+	&:before {
+		content: '';
+		position: absolute;
+		height: 100%;
+		width: 1px;
+		background: $gray-lighter;
+		left: 0;
+	}
+
+	ul {
+		list-style: none;
+		padding: $padding-large-vertical*2 0 ;
+		z-index: 1;
+	}
+
+	li {
+		position: relative;
+		float: right;
+		width: 90%;
+		margin-bottom: 1em;
+		&:before {
+			content: '';
+			position: absolute;
+			width: 35%;
+			height: 1px;
+			left: -25%;
+			top: 50%;
+			margin-top: -1px;
+			background: $gray-lighter;
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			left: -25%;
+			top: 50%;
+			margin-top: -10px;
+			background: #fff;
+			border: 1px solid $gray-lighter;
+			border-radius: 1000px;
+			transform: translateX(-50%);
+		}
+		> a {
+			display: block;
+			color: $text-color;
+			&:hover, &:focus {
+				text-decoration: none;
+				color: darken($text-color, 5%);
+				.panel-body {
+					&:after {
+						background: rgba(0,0,0,0.7);
+					}
+				}
+			}
+		}
+		.panel {
+			overflow: hidden;
+		}
+		.panel-body {
+			position: relative;
+			padding: 0;
+			box-shadow: 0 0px 4px rgba(0,0,0,1);
+			overflow: hidden;
+			&:after {
+				content: '';
+				position: absolute;
+				display: block;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.1);
+				transition: background .2s;
+			}
+			> img {
+			}
+			.panel-body-inner {
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+				padding: $panel-body-padding;
+				color: #fff;
+				text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+				background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.85) 100%);
+				z-index: 1;
+			}
+			h2 {
+				margin: 0;
+				font-size: $font-size-h4;
+			}
+		}
+		.panel-footer {
+			background: #fff;
+			p {
+				margin: 0;
+				&:not(.lead) {
+					line-height: 2;
+				}
+			}
+		}
+	}
+
+}
+
+@media #{$small-up} {
+	.timeline {
+		&:before {
+			left: 50%;
+		}
+		ul {
+			max-width: 700px;
+			margin: 0 auto;
+			padding-left: 0;
+		}
+
+		li {
+			width: 40%;
+		}
+
+		li:nth-child(even) {
+			float: right;
+			margin-top: 2em;
+		}
+
+		li:nth-child(odd) {
+			float: left;
+
+			&:before {
+				right: -25%;
+				left: auto;
+				margin-top: 0;
+			}
+			&:after {
+				right: -25%;
+				left: auto;
+				transform: translateX(50%);
+			}
+		}
+
+		li:nth-of-type(2n+1) {
+			clear: both;
+		}
+
+	}
+}
+@media #{$medium-up} {
+	.timeline {
+		ul {
+			max-width: 1000px;
+		}
+		li {
+			.panel-body {
+				h2 {
+					font-size: $font-size-h2;
+				}
+			}
+		}
+	}
+}

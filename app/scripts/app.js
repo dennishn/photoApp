@@ -6,38 +6,44 @@ angular.module('photoAppApp', [
 	'ngSanitize',
 	'ngRoute',
 	'ngAnimate',
+	'firebase',
 	'ui.router',
 	'infinite-scroll',
-	'mm.foundation',
-	'lazyload'
+	'wu.masonry',
+	'angularMoment'
 	])
-	.run(['$rootScope', '$state', '$stateParams', function ($rootScope,   $state,   $stateParams) {
+	.run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
 		$rootScope.$state = $state;
 		$rootScope.$stateParams = $stateParams;
 	}])
-	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-		// $routeProvider
-		// .when('/', {
-		// 	templateUrl: 'views/main.html',
-		// 	controller: 'MainCtrl'
-		// })
-		// .when('/swiper', {
-		// 	templateUrl: 'views/swiper.html',
-		// 	controller: 'MainCtrl'
-		// })
-		// .otherwise({
-		// 	redirectTo: '/'
-		// });
+	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider, amMoment) {
 		$urlRouterProvider.otherwise('/');
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'views/main.html',
+				templateUrl: 'views/overview.html',
 				controller: 'MainCtrl'
 			})
-			.state('swiper', {
-				url: '/swiper',
-				templateUrl: 'views/swiper.html',
-				controller: 'MainCtrl'
-			});
+			.state('album', {
+				url: '/album/:id',
+				templateUrl: 'views/album.html',
+				controller: 'AlbumCtrl',
+				data: {
+					'id': ':id'
+				}
+			})
+			.state('photos', {
+				url: '/photos/:id',
+				templateUrl: 'views/photos.html',
+				controller: 'PhotoCtrl',
+				data: {
+					'id': ':id'
+				}
+			})
 	}]);
+
+angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 250)
+
+angular.module('photoAppApp').run(function(amMoment) {
+	amMoment.changeLanguage('da');
+});

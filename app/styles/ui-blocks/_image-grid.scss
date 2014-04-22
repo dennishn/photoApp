@@ -1,0 +1,15 @@
+.image-grid {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	.image-grid-item {
+		width: 50%;
+		@media #{$small-up} {
+			width: 25%;
+		}
+		.img-responsive {
+			min-width: 100%;
+			padding: 2px;
+		}
+	}
+}

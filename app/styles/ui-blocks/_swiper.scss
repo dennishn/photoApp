@@ -1,32 +1,28 @@
-#swiper {
+.swiper-container {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	background: #000;
-	perspective: 1400px;
-	transform: translate3d(0,0,0);
-	.swiper-wrapper {
-		transform-style: preserve-3d;
-	}
-	.swiper-slide {
-		position: relative;
-		background: rgba(0,0,0,0.6);
-		transform-style: preserve-3d;
-	}
+	-webkit-perspective: 1200px;
+	-moz-perspective: 1200px;
+	-ms-perspective: 1200px;
+	perspective: 1200px;
 }
-
-#imageSlider .swiper-slide {
-	text-align: center;
-	border-radius: 5px;
-	overflow: hidden;
-	.caption {
-		position: absolute;
-		width: 100%;
-		bottom: 0;
-		left: 0;
-		padding: 20px;
-		text-align: left;
-		color: #fff;
-		background: rgba(0,0,0,0.25);
-	}
+.swiper-wrapper {
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+.swiper-slide {
+	position: relative;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+.swiper-slide {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

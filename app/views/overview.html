@@ -1,0 +1,26 @@
+<!-- <h1>hej</h1>
+<a href="#" ng-click="reverseOrder()">Reverse {{sortReverse}}</a>
+<a href="#" ng-click="orderBy('created')">Sort by date</a>
+<a href="#" ng-click="orderBy('images')">Sort by imagecount</a> -->
+<div class="container-fluid">
+	<div class="timeline">
+		<ul class="clearfix">
+			<li ng-repeat="album in albums.items | orderObjectBy:sortBy:sortReverse">
+				<a href="#" ui-sref="album({ id: album.id})">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<img class="img-responsive" ng-src="{{album.image[0].source}}">
+							<div class="panel-body-inner">
+								<h2>{{album.name}}</h2>
+							</div>
+						</div>
+						<div class="panel-footer clearfix">
+							<p class="pull-left">Billeder: {{album.count}}</p>
+							<p class="pull-right">For: <span am-time-ago="album.created"></span></p>
+						</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>

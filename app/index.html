@@ -9,6 +9,7 @@
 		<title></title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width">
+		<base href="/" />
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 		<!-- build:css styles/vendor.css -->
 		<!-- bower:css -->
@@ -25,8 +26,16 @@
 		<![endif]-->
 
 		<!-- Add your site or application content here -->
-		<div class="application">
-			<div class="container slide" ui-view></div>
+		<div class="application" ui-view></div>
+		<div ng-controller="AuthCtrl">
+			<ul class="nav navbar-nav navbar-right" ng-show="isLoggedIn()">
+			  	<li>
+			    	<a href="#" ng-click="logout()">Logout</a>
+			  	</li>
+			</ul>
+			<a href="#" ng-click="login()" ng-hide="isLoggedIn()">Login</a>
+			<p>{{user.displayName}}</p>
+			<p>{{isLoggedIn()}}</p>
 		</div>
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -53,25 +62,50 @@
 		<script src="bower_components/angular-cookies/angular-cookies.js"></script>
 		<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 		<script src="bower_components/angular-route/angular-route.js"></script>
-		<script src="bower_components/fastclick/lib/fastclick.js"></script>
-		<script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
 		<script src="bower_components/angular-animate/angular-animate.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js"></script>
+		<script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script src="bower_components/ngInfiniteScroll/ng-infinite-scroll.js"></script>
+		<script src="bower_components/get-style-property/get-style-property.js"></script>
+		<script src="bower_components/get-size/get-size.js"></script>
+		<script src="bower_components/eventie/eventie.js"></script>
+		<script src="bower_components/doc-ready/doc-ready.js"></script>
+		<script src="bower_components/eventEmitter/EventEmitter.js"></script>
+		<script src="bower_components/jquery-bridget/jquery.bridget.js"></script>
+		<script src="bower_components/matches-selector/matches-selector.js"></script>
+		<script src="bower_components/outlayer/item.js"></script>
+		<script src="bower_components/outlayer/outlayer.js"></script>
+		<script src="bower_components/masonry/masonry.js"></script>
+		<script src="bower_components/imagesloaded/imagesloaded.js"></script>
+		<script src="bower_components/angular-masonry/angular-masonry.js"></script>
 		<script src="bower_components/swiper/dist/idangerous.swiper.js"></script>
 		<script src="bower_components/swiper-smooth-progress/dist/idangerous.swiper.progress.js"></script>
-		<script src="bower_components/swiper-hash-navigation/dist/idangerous.swiper.hashnav.js"></script>
-		<script src="bower_components/ngInfiniteScroll/ng-infinite-scroll.js"></script>
-		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="bower_components/firebase/firebase.js"></script>
+		<script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
+		<script src="bower_components/angularfire/angularfire.js"></script>
+		<script src="bower_components/moment/moment.js"></script>
+		<script src="bower_components/angular-moment/angular-moment.js"></script>
 		<!-- endbower -->
-		<script src="bower_components/angular-foundation/mm-foundation-tpls.js"></script>
-		<!-- endbuild -->
+		<script src="bower_components/moment/lang/da.js"></script>
+		<!-- While The New Version of Inf-Scroll isnt working
+		<script src="https://rawgithub.com/sroze/ngInfiniteScroll/1.1.0/build/ng-infinite-scroll.js"></script>
+		endbuild -->
+
+
 
 		<!-- build:js({.tmp,app}) scripts/scripts.js -->
 		<script src="scripts/app.js"></script>
 		<script src="scripts/controllers/main.js"></script>
+		<script src="scripts/controllers/auth.js"></script>
+		<script src="scripts/controllers/album.js"></script>
+		<script src="scripts/controllers/photos.js"></script>
+		<script src="scripts/services/auth.js"></script>
+		<script src="scripts/services/albums.js"></script>
 		<script src="scripts/services/photos.js"></script>
-		<script src="scripts/directives/lazyload.js"></script>
-		<script src="scripts/directives/swiper.js"></script>
-<script src="scripts/controllers/swiper.js"></script>
+		<script src="scripts/directives/bnLazySrc.js"></script>
+		<script src="scripts/directives/fullscreen-images.js"></script>
 		<!-- endbuild -->
 	</body>
 </html>
